@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+opsworks_cookbooks
+==================
+=======
 phpapp Cookbook
 ===============
 TODO: Enter the cookbook description here.
@@ -66,3 +70,4 @@ e.g.
 License and Authors
 -------------------
 Authors: TODO: List authors
+>>>>>>> Recipe phpapp simple, con test
