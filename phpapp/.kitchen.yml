@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+  require_chef_omnibus: 11.10.4
+
+platforms:
+  - name: ubuntu-12.04
+    run_list: apt::default
+
+suites:
+  - name: default
+    run_list:
+      - recipe[phpapp::default]
+    attributes:
+        myapp:
+            config: "myapp.conf"
+        # machine_fqdn: working.computers.biz
+        # machine_fqdn_as_hostname: true
+        # apache:
+        #     mpm: worker

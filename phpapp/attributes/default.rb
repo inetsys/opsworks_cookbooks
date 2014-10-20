@@ -1,0 +1,5 @@
+default['myapp']['user'] = 'myapp'
+default['myapp']['group'] = 'myapp'
+default['myapp']['name'] = 'myapp'
+default['myapp']['config'] = 'myapp.conf'
+default['myapp']['document_root'] = '/var/www/myapp'
