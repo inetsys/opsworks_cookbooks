@@ -1,0 +1,80 @@
+<VirtualHost *:80>
+  ServerName <%= @params[:server_name] %>
+  <% if @params[:server_aliases] && !@params[:server_aliases].empty? -%>
+  ServerAlias <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
+  <% end -%>
+  DocumentRoot <%= @params[:docroot] %>
+
+  <Directory <%= @params[:docroot] %>>
+    Options FollowSymLinks
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+  LogLevel <%= node[:apache][:log_level] %>
+  ErrorLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
+  CustomLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-access.log combined
+
+  FileETag none
+
+  RewriteEngine On
+  RewriteLog <%= node[:apache][:log_dir] %>/<%= @application_name %>-rewrite.log
+  RewriteLogLevel 0
+
+  Include <%= @params[:local_config] %>*
+</VirtualHost>
+
+# Canonical host, <%= @params[:server_name] %>
+# TODO redirigir .domain.com a www.domain.com??
+<VirtualHost *:80>
+
+</VirtualHost>
+
+<% if node[:deploy][@application_name][:ssl_support] -%>
+<VirtualHost *:443>
+	ServerName <%= @params[:server_name] %>
+	<% if @params[:server_aliases] && !@params[:server_aliases].empty? -%>
+	ServerAlias <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
+	<% end -%>
+	DocumentRoot <%= @params[:docroot] %>
+
+	SSLEngine on
+	SSLProxyEngine on
+	SSLProtocol          all -SSLv2
+    SSLCipherSuite       ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128:AES256:AES:DES-CBC3-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK
+    SSLHonorCipherOrder  on
+
+	SSLCertificateFile <%= node[:apache][:dir] %>/ssl/<%= @params[:server_name] %>.crt
+	SSLCertificateKeyFile <%= node[:apache][:dir] %>/ssl/<%= @params[:server_name] %>.key
+	<% if @params[:ssl_certificate_ca] -%>
+		SSLCACertificateFile <%= node[:apache][:dir] %>/ssl/<%= @params[:server_name] %>.ca
+	<% end -%>
+	# TODO: se puede meter el chain completo para el CA?
+
+	<Directory <%= @params[:docroot] %>>
+		Options FollowSymLinks
+		AllowOverride All
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	LogLevel info
+	ErrorLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
+	CustomLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-ssl-access.log combined
+	CustomLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-ssl-ganglia.log ganglia
+
+	FileETag none
+
+	RewriteEngine On
+	Include <%= @params[:rewrite_config] %>-ssl*
+	RewriteLog <%= node[:apache][:log_dir] %>/<%= @application_name %>-rewrite.log
+	RewriteLogLevel 0
+
+	<% if @params[:mounted_at] -%>
+	AliasMatch ^<%= @params[:mounted_at] %>/(.*)$ <%= @params[:docroot] %>$1
+	<% end -%>
+
+	Include <%= @params[:local_config] %>-ssl*
+</VirtualHost>
+<% end -%>
