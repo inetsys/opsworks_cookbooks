@@ -8,14 +8,24 @@
 #
 node[:deploy].each do |app, deploy|
 
-    %w[ cache log templates_c ].each do |dir|
-        directory "#{deploy[:deploy_to]}/#{dir}" do
+	puts deploy
+
+    Array(node[:phpapp][:smarty][:cache_dir]).each do |dir|
+        directory "#{deploy[:current_path]}/#{dir}" do
             owner deploy[:user]
             group deploy[:group]
-            mode '0755'
+            mode '0775'
             recursive true
             action :create
         end
-    done
+    end
 
-done
+    directory "#{deploy[:current_path]}/#{node[:phpapp][:smarty][:templates_c_dir]}" do
+        owner deploy[:user]
+        group deploy[:group]
+        mode '0775'
+        recursive true
+        action :create
+    end
+
+end
