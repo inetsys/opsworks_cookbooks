@@ -21,10 +21,13 @@ node[:deploy].each do |application, deploy|
 		app application
 	end
 
-	web_app do
-		name application
+	web_app application do
+		server_name deploy[:domains]
+		# server_aliases ["www.Web1.com"]
+		allow_override "all"
+		docroot deploy[:absolute_document_root]
+		# aliases ["/foo /bar", "/baz /meh"]
 	end
-
     # La receta 'deploy' crea el directorio log
   #   directory "#{deploy[:deploy_to]}/#{node[:phpapp][:log_dir]}" do
 		# owner deploy[:user]
