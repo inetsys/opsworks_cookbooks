@@ -21,6 +21,8 @@ node['deploy'].each do |application, deploy|
         app application
     end
 
+    puts deploy
+
     web_app application do
         server_name deploy['domains']
         # server_aliases ["www.Web1.com"]
