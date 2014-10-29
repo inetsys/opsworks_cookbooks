@@ -1,0 +1,58 @@
+{
+	"default":
+	{
+		"servidor_desarrollo": <%= (node['phpapp']['environment'] == 'dev') %>,
+		"servidor_produccion": <%= (node['phpapp']['environment'] == 'live') %>,
+		"servidor_integracion": <%= (node['phpapp']['environment'] == 'staging') %>,
+		"servidor_testing": <%= (node['phpapp']['environment'] == 'testing') %>,
+
+		"debug_sql": <%= node['phpapp']['sql']['debug'] %>,
+		"truncate_debug": <%= node['phpapp']['sql']['truncate-debug'] %>,
+
+		"smarty_cache": <%= node['phpapp']['smarty']['cache'] %>,
+		"smarty_error_reporting": <%= node['phpapp']['smarty']['error_reporting'] %>,
+		"smarty_compile_check": <%= node['phpapp']['smarty']['compile_check'] %>,
+		"smarty_debugging_ctrl": "<%= node['phpapp']['smarty']['debugging_ctrl'] %>",
+
+		"email_avisos": "<%= node['phpapp']['email']['avisos'] %>",
+		"email_testigo": "<%= node['phpapp']['email']['testigo'] %>",
+		"email_origen": "<%= node['phpapp']['email']['origen'] %>",
+		"email_errores": "<%= node['phpapp']['email']['errores'] %>",
+
+		"mailserver_mailer": "<%= node['phpapp']['mail-server']['mailer'] %>",
+		"mailserver_host": "<%= node['phpapp']['mail-server']['host'] %>",
+		"mailserver_smtpauth": "<%= node['phpapp']['mail-server']['smtpauth'] %>",
+		"mailserver_port": "<%= node['phpapp']['mail-server']['port'] %>",
+		"mailserver_smtpuser": "<%= node['phpapp']['mail-server']['smtpuser'] %>",
+		"mailserver_smtppass": "<%= node['phpapp']['mail-server']['smtppass'] %>",
+		"mailserver_timeout": "<%= node['phpapp']['mail-server']['timeout'] %>",
+
+		"session_dir": "<%= node['phpapp']['session']['dir'] %>",
+		"session_lifetime": <%= node['phpapp']['session']['lifetime'] %>
+	},
+
+	"path":
+	{
+		"log_dir": "<%= node['phpapp']['log']['dir'] %>",
+		"lib_dir": "<%= node['phpapp']['path']['lib'] %>",
+		"config_dir": "<%= node['phpapp']['path']['config'] %>",
+		"app_cache_dir": "<%= node['phpapp']['cache_dir'] %>",
+		"locale_dir": "<%= node['phpapp']['path']['locale'] %>",
+
+		"smarty_templates_path": "<%= node['phpapp']['smarty']['templates_dir'] %>",
+		"smarty_templates_c_path": "<%= node['phpapp']['smarty']['templates_c_dir'] %>",
+		"smarty_cache_path": "<%= node['phpapp']['smarty']['cache_dir'] %>"
+	},
+
+	"error":
+	{
+		"mailserver_mailer": "<%= node['phpapp']['mail-server']['mailer'] %>",
+		"mailserver_host": "<%= node['phpapp']['mail-server']['host'] %>",
+		"mailserver_smtpauth": "<%= node['phpapp']['mail-server']['smtpauth'] %>",
+		"mailserver_port": "<%= node['phpapp']['mail-server']['port'] %>",
+		"mailserver_smtpuser": "<%= node['phpapp']['mail-server']['smtpuser'] %>",
+		"mailserver_smtppass": "<%= node['phpapp']['mail-server']['smtppass'] %>",
+		"mailserver_timeout": "<%= node['phpapp']['mail-server']['timeout'] %>"
+	}
+
+}
