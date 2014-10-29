@@ -1,0 +1,14 @@
+{
+    "default_attributes": {
+        "opsworks" : {
+            "ruby_stack" : "ruby",
+            "stack" : {
+                "name" : "PHPWebServers",
+                "rds_instances" : []
+            },
+            "layers" : {}
+        }
+    },
+    "chef_type" : "environment",
+    "json_class" : "Chef::Environment"
+}

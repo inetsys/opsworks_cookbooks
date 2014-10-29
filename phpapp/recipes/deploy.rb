@@ -8,12 +8,12 @@
 #
 include_recipe 'deploy'
 
-node[:deploy].each do |application, deploy|
+node['deploy'].each do |application, deploy|
 
 	opsworks_deploy_dir do
-		user deploy[:user] || node[:apache][:user]
-		group deploy[:group] || node[:apache][:group]
-		path deploy[:deploy_to]
+		user deploy['user'] || node['apache']['user']
+		group deploy['group'] || node['apache']['group']
+		path deploy['deploy_to']
 	end
 
 	opsworks_deploy do
@@ -22,10 +22,10 @@ node[:deploy].each do |application, deploy|
 	end
 
 	web_app application do
-		server_name deploy[:domains]
+		server_name deploy['domains']
 		# server_aliases ["www.Web1.com"]
 		allow_override "all"
-		docroot deploy[:absolute_document_root]
+		docroot deploy['absolute_document_root']
 		# aliases ["/foo /bar", "/baz /meh"]
 	end
     # La receta 'deploy' crea el directorio log

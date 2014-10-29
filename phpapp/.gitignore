@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-.vagrant
-/cookbooks
-
-# Bundler
-=======
 *~
 *#
 .#*
@@ -19,7 +13,6 @@ Berksfile.lock
 
 # Bundler
 Gemfile.lock
->>>>>>> Recipe phpapp simple, con test
 bin/*
 .bundle/*
 

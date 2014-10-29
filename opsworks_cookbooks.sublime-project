@@ -9,7 +9,7 @@
     "settings": {
         "trim_trailing_white_space_on_save": true,
         "auto_complete": true,
-        "translate_tabs_to_spaces": false,
+        "translate_tabs_to_spaces": true,
         "detect_indentation": false,
         "indent_to_bracket": false,
         "tab_size": 4

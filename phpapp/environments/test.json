@@ -1,0 +1,30 @@
+{
+    "default_attributes": {
+        "deploy" : {
+            "demo-php-simple-app" : {
+                "application" : "demo-php-simple-app",
+                "application_type" : "php",
+                "document_root" : "public",
+                "deploy_to" : "/srv/www/demo-php-simple-app",
+                "scm" : {
+                    "scm_type" : "git",
+                    "repository" : "https://github.com/amazonwebservices/opsworks-demo-php-simple-app.git"
+                },
+                "domains" : ["domain.test"],
+                "memcached" : {},
+                "database" : {},
+                "user" : "vagrant"
+            }
+        },
+        "opsworks" : {
+            "ruby_stack" : "ruby",
+            "stack" : {
+                "name" : "PHPWebServers",
+                "rds_instances" : []
+            },
+            "layers" : {}
+        }
+    },
+    "chef_type" : "environment",
+    "json_class" : "Chef::Environment"
+}
