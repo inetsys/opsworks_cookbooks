@@ -16,7 +16,7 @@ default['phpapp']['cache_dir'] = 'cache/app'
 default['phpapp']['config_dir'] = 'config'
 
 # SQL config
-default['phpapp']['sql']['truncate-debug'] = false
+default['phpapp']['sql']['truncate_debug'] = false
 
 # Email addresses
 default['phpapp']['email']['avisos'] = 'desarrollo@inetsys.es'

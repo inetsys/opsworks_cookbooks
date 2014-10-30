@@ -7,7 +7,7 @@
 		"servidor_testing": <%= (node[:phpapp][:environment] == 'testing') %>,
 
 		"debug_sql": <%= node[:phpapp][:sql][:debug] %>,
-		"truncate_debug": <%= node[:phpapp][:sql][:truncatedebug] %>,
+		"truncate_debug": <%= node[:phpapp][:sql][:truncate_debug] %>,
 
 		"smarty_cache": <%= node[:phpapp][:smarty][:cache] %>,
 		"smarty_error_reporting": <%= node[:phpapp][:smarty][:error_reporting] %>,
