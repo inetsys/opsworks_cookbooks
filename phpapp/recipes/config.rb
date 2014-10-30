@@ -9,8 +9,6 @@
 
 node['deploy'].each do |application, deploy|
 
-	puts deploy
-
     directory "#{deploy['current_path']}/#{node['phpapp']['cache_dir']}" do
         owner deploy['user']
         group deploy['group']

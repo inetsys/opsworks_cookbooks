@@ -23,7 +23,7 @@ node['deploy'].each do |application, deploy|
 
     Chef::Log.info("Node deploy: #{deploy}")
 
-    web_app application do
+    web_app deploy['application'] do
         server_name deploy['domains'].first
         unless deploy['domains'][1, deploy['domains'].size].empty?
             server_aliases deploy['domains'][1, deploy['domains'].size]
