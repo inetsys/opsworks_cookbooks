@@ -25,13 +25,13 @@ default['phpapp']['email']['origen'] = 'postmaster@inetsys.es'
 default['phpapp']['email']['errores'] = 'desarrollo_errores@inetsys.es'
 
 # Mail server
-default['phpapp']['mail-server']['mailer'] = 'smtp'
-default['phpapp']['mail-server']['host'] = '192.168.100.25'
-default['phpapp']['mail-server']['smtpauth'] = true
-default['phpapp']['mail-server']['port'] = 25
-default['phpapp']['mail-server']['smtpuser'] = 'postmaster@inetsys.es'
-default['phpapp']['mail-server']['smtppass'] = 'inetsys'
-default['phpapp']['mail-server']['timeout'] = '30'
+default['phpapp']['mailserver']['mailer'] = 'smtp'
+default['phpapp']['mailserver']['host'] = '192.168.100.25'
+default['phpapp']['mailserver']['smtpauth'] = true
+default['phpapp']['mailserver']['port'] = 25
+default['phpapp']['mailserver']['smtpuser'] = 'postmaster@inetsys.es'
+default['phpapp']['mailserver']['smtppass'] = 'inetsys'
+default['phpapp']['mailserver']['timeout'] = '30'
 
 # Session configuration
 default['phpapp']['session']['dir'] = '/tmp/session_phpapp'
