@@ -21,8 +21,6 @@ node['deploy'].each do |application, deploy|
         app application
     end
 
-    Chef::Log.info("Node deploy: #{deploy}")
-
     web_app deploy['application'] do
         server_name deploy['domains'].first
         unless deploy['domains'][1, deploy['domains'].size].empty?
@@ -30,7 +28,6 @@ node['deploy'].each do |application, deploy|
         end
         allow_override "all"
         docroot deploy['absolute_document_root']
-        mounted_at deploy['mounted_at']
     end
 
 end
