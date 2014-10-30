@@ -1,0 +1,48 @@
+source "https://supermarket.getchef.com"
+
+# cookbook 'apt'
+cookbook 'yum-pgdg'
+
+metadata
+
+def opsworks_cookbook(name, version = '>= 0.0.0', options = {})
+    cookbook name, version, { path: "/home/pablo/Desarrollo/AWS/opsworks-cookbooks/#{name}" }.merge(options)
+    # cookbook name, version, { github: 'aws/opsworks-cookbooks', branch: 'release-chef-11.10', rel: name }.merge(options)
+end
+
+group :integration do
+    opsworks_cookbook 'agent_version'
+	opsworks_cookbook 'apache2'
+	opsworks_cookbook 'dependencies'
+	opsworks_cookbook 'deploy'
+	opsworks_cookbook 'ebs'
+	opsworks_cookbook 'gem_support'
+	opsworks_cookbook 'haproxy'
+	opsworks_cookbook 'memcached'
+	opsworks_cookbook 'mod_php5_apache2'
+	opsworks_cookbook 'mysql'
+	opsworks_cookbook 'nginx'
+	opsworks_cookbook 'opsworks_agent_monit'
+	opsworks_cookbook 'opsworks_berkshelf'
+	opsworks_cookbook 'opsworks_bundler'
+	opsworks_cookbook 'opsworks_cleanup'
+	opsworks_cookbook 'opsworks_commons'
+	opsworks_cookbook 'opsworks_custom_cookbooks'
+	opsworks_cookbook 'opsworks_ganglia'
+	opsworks_cookbook 'opsworks_initial_setup'
+	opsworks_cookbook 'opsworks_java'
+	opsworks_cookbook 'opsworks_nodejs'
+	opsworks_cookbook 'opsworks_rubygems'
+	opsworks_cookbook 'opsworks_shutdown'
+	opsworks_cookbook 'opsworks_stack_state_sync'
+	opsworks_cookbook 'packages'
+	opsworks_cookbook 'passenger_apache2'
+	opsworks_cookbook 'php'
+	opsworks_cookbook 'rails'
+	opsworks_cookbook 'ruby'
+	opsworks_cookbook 'scm_helper'
+	opsworks_cookbook 'ssh_host_keys'
+	opsworks_cookbook 'ssh_users'
+	opsworks_cookbook 'test_suite'
+	opsworks_cookbook 'unicorn'
+end
