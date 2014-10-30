@@ -21,7 +21,7 @@ node['deploy'].each do |application, deploy|
         app application
     end
 
-    puts deploy
+    Chef::Log.info("Node deploy: #{deploy}")
 
     web_app application do
         server_name deploy['domains']
