@@ -7,7 +7,7 @@
 		"servidor_testing": <%= (node[:phpapp][:environment] == 'testing') %>,
 
 		"debug_sql": <%= node[:phpapp][:sql][:debug] %>,
-		"truncate_debug": <%= node[:phpapp][:sql][:truncatedebug'] %>,
+		"truncate_debug": <%= node[:phpapp][:sql][:truncatedebug] %>,
 
 		"smarty_cache": <%= node[:phpapp][:smarty][:cache] %>,
 		"smarty_error_reporting": <%= node[:phpapp][:smarty][:error_reporting] %>,
@@ -19,13 +19,13 @@
 		"email_origen": "<%= node[:phpapp][:email][:origen] %>",
 		"email_errores": "<%= node[:phpapp][:email][:errores] %>",
 
-		"mailserver_mailer": "<%= node[:phpapp][:mailserver'][:mailer] %>",
-		"mailserver_host": "<%= node[:phpapp][:mailserver'][:host] %>",
-		"mailserver_smtpauth": "<%= node[:phpapp][:mailserver'][:smtpauth] %>",
-		"mailserver_port": "<%= node[:phpapp][:mailserver'][:port] %>",
-		"mailserver_smtpuser": "<%= node[:phpapp][:mailserver'][:smtpuser] %>",
-		"mailserver_smtppass": "<%= node[:phpapp][:mailserver'][:smtppass] %>",
-		"mailserver_timeout": "<%= node[:phpapp][:mailserver'][:timeout] %>",
+		"mailserver_mailer": "<%= node[:phpapp][:mailserver][:mailer] %>",
+		"mailserver_host": "<%= node[:phpapp][:mailserver][:host] %>",
+		"mailserver_smtpauth": "<%= node[:phpapp][:mailserver][:smtpauth] %>",
+		"mailserver_port": "<%= node[:phpapp][:mailserver][:port] %>",
+		"mailserver_smtpuser": "<%= node[:phpapp][:mailserver][:smtpuser] %>",
+		"mailserver_smtppass": "<%= node[:phpapp][:mailserver][:smtppass] %>",
+		"mailserver_timeout": "<%= node[:phpapp][:mailserver][:timeout] %>",
 
 		"session_dir": "<%= node[:phpapp][:session][:dir] %>",
 		"session_lifetime": <%= node[:phpapp][:session][:lifetime] %>
@@ -46,13 +46,13 @@
 
 	"error":
 	{
-		"mailserver_mailer": "<%= node[:phpapp][:mailserver'][:mailer] %>",
-		"mailserver_host": "<%= node[:phpapp][:mailserver'][:host] %>",
-		"mailserver_smtpauth": "<%= node[:phpapp][:mailserver'][:smtpauth] %>",
-		"mailserver_port": "<%= node[:phpapp][:mailserver'][:port] %>",
-		"mailserver_smtpuser": "<%= node[:phpapp][:mailserver'][:smtpuser] %>",
-		"mailserver_smtppass": "<%= node[:phpapp][:mailserver'][:smtppass] %>",
-		"mailserver_timeout": "<%= node[:phpapp][:mailserver'][:timeout] %>"
+		"mailserver_mailer": "<%= node[:phpapp][:mailserver][:mailer] %>",
+		"mailserver_host": "<%= node[:phpapp][:mailserver][:host] %>",
+		"mailserver_smtpauth": "<%= node[:phpapp][:mailserver][:smtpauth] %>",
+		"mailserver_port": "<%= node[:phpapp][:mailserver][:port] %>",
+		"mailserver_smtpuser": "<%= node[:phpapp][:mailserver][:smtpuser] %>",
+		"mailserver_smtppass": "<%= node[:phpapp][:mailserver][:smtppass] %>",
+		"mailserver_timeout": "<%= node[:phpapp][:mailserver][:timeout] %>"
 	}
 
 }
